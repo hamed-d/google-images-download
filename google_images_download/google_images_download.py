@@ -790,6 +790,8 @@ class googleimagesdownload:
                     return_image_name = ''
                     absolute_path = ''
                     return download_status, download_message, return_image_name, absolute_path
+                if len(image_name)>180:
+                    image_name = image_name[:100]+'.'+image_name.split('.')
 
                 # prefix name in image
                 if prefix:
@@ -923,6 +925,8 @@ class googleimagesdownload:
                             print(download_message_thumbnail)
 
                     count += 1
+                    if len(return_image_name)>180:
+                        return_image_name = return_image_name[:100]+'.'+return_image_name.split('.')[-1]
                     object['image_filename'] = return_image_name
                     items.append(object)  # Append all the links in the list named 'Links'
                     abs_path.append(absolute_path)

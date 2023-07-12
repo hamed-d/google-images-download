@@ -7,6 +7,7 @@
 # Import Libraries
 import sys
 import selenium.common.exceptions
+import time
 
 version = (3, 0)
 cur_version = sys.version_info
@@ -203,6 +204,8 @@ class googleimagesdownload:
     def _image_objects_from_pack(data):
         image_data = json.loads(data)
         # NOTE: google sometimes changes their format, breaking this. set a breakpoint here to find the correct index
+        with open(f'C:/Users/hamed/Code/clip-gsearch/logs/log_{time.time()}.json', 'w') as f:
+            json.dump(image_data, f)
         grid = image_data[56][-1][0][-1][-1][0]
         image_objects = []
         for item in grid:
@@ -791,7 +794,7 @@ class googleimagesdownload:
                     absolute_path = ''
                     return download_status, download_message, return_image_name, absolute_path
                 if len(image_name)>180:
-                    image_name = image_name[:100]+'.'+image_name.split('.')
+                    image_name = image_name[:100]+'.'+image_name.split('.')[-1]
 
                 # prefix name in image
                 if prefix:

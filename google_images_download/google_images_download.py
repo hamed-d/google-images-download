@@ -204,8 +204,8 @@ class googleimagesdownload:
     def _image_objects_from_pack(data):
         image_data = json.loads(data)
         # NOTE: google sometimes changes their format, breaking this. set a breakpoint here to find the correct index
-        with open(f'C:/Users/hamed/Code/clip-gsearch/logs/log_{time.time()}.json', 'w') as f:
-            json.dump(image_data, f)
+        # with open(f'C:/Users/hamed/Code/clip-gsearch/logs/log_{time.time()}.json', 'w') as f:
+        #     json.dump(image_data, f)
         grid = image_data[56][-1][0][-1][-1][0]
         image_objects = []
         for item in grid:
